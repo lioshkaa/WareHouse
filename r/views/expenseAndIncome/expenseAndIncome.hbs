@@ -1,0 +1,88 @@
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"
+    ></script>
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="stylesheet" type="text/css" href="/print.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-inner">
+        <div class="header_logo">
+        </div>
+       
+      </div>
+    </header>
+    <main>
+      <section>
+         <h1 style="text-align: center;">Расход</h1>
+        <table class="table table-bordered table-dark">
+          <thead>
+            <tr>
+              <th scope="col">Номер документа</th>
+              <th scope="col">Пользователь</th>
+              <th scope="col">Код товара</th>
+              <th scope="col">Наименование предпреятия</th>
+              <th scope="col">Количество</th>
+              <th scope="col">Дата продажи</th>
+              <th scope="col">Цена</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">{{NumberDocument}}</th>
+              <td>{{title}}</td>
+              <td>{{kod}}</td>
+              <td>{{nav}}</td>
+              <td class="kol">{{kol}}</td>
+              <td>{{data}}</td>
+              <td class="cena">{{cena}}</td>
+            </tr>
+          </tbody>
+        </table>
+         Общая стоимость расхода: <span class="Sum">{{sums}}</span>
+      </section>
+      <section>
+        <h1 style="text-align: center; margin-bottom:20px">Приход</h1>
+        <table class="table table-bordered table-dark">
+          <thead>
+            <tr>
+              <th scope="col">Номер документа</th>
+              <th scope="col">Пользователь</th>
+              <th scope="col">Код товара</th>
+              <th scope="col">Наименование предпреятия</th>
+              <th scope="col">Количество</th>
+              <th scope="col">Дата покупки</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">{{NumberDocument}}</th>
+              <td>{{title}}</td>
+              <td>{{kod}}</td>
+              <td>{{nav}}</td>
+              <td>{{kol}}</td>
+              <td>{{dataPurchase}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+          <a href="#" class="action-print btn btn-primary">Распечатать</a>
+    </main>
+    <script>
+      window.print(); 
+      setTimeout(function(){ window.history.back() }, 500);
+    </script>
+  </body>
+
+</html>

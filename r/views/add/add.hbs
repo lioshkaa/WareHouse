@@ -1,0 +1,129 @@
+
+<html>
+<head>
+
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>    
+
+<link rel="stylesheet" type="text/css" href="/style.css">     
+</head>
+<body>
+  <header class="header">
+        <div class="header-inner">
+          <div class="header_logo">
+            <h1>Пользователь {{title}}</h1>
+            </div>
+            <div class="button">
+              <form action="/getdetails" method="get">
+                   <button type="submit" class="btn btn-primary">Личный кабинет</button>
+              </form>
+              </div>
+            
+          </div> 
+  </header>
+<main>
+ <div class="tabs-block-wrapper">
+   <div id="tabs">
+     <div class="tab-btn active" data-btn="1">Товары</div>
+          <div class="tab-btn " data-btn="2">Предприятие</div>
+               <div class="tab-btn " data-btn="3">Расход/Приход</div>
+     </div>
+     <div id="contents">
+            <div class="content active" data-content="1">
+                <form action="/sklad" method="post">
+      <div class="form-group">
+    <label for="exampleInputEmail1">Наименование товара</label>
+    <input type="text" class="form-control cl" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Наименование товара" required name="nav">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Код</label>
+    <input type="Number" class="form-control cl" id="exampleInputPassword1" placeholder="Код" required name="kod">
+  </div>
+    <div class="form-group">
+    <label for="exampleInputEmail1">Единица измерения</label>
+    <input type="text" class="form-control cl" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Единица измерения" required name="ed"> 
+  </div>
+   <div class="form-group">
+    <label for="exampleInputEmail1">Год выпуска</label>
+    <input type="Number" class="form-control cl" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Год выпуска" min="1990" max="2022" required name="god">
+  </div>
+    <div class="form-group">
+    <label for="exampleInputEmail1">Цена</label>
+    <input type="Number" class="form-control cl" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Цена" required name="cena">
+  </div>
+  <button type="submit" class="btn btn-primary">Отправить данные</button>
+    </form>
+            </div>
+            <div class="content " data-content="2">
+              <form action="/enteprise" method="post">
+      <div class="form-group">
+    <label for="exampleInputEmail1">Наименование Предприятия</label>
+    <input type="text" class="form-control cl" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Наименование предприятия" required name="nav">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Телефон</label>
+    <input type="tel" class="form-control cl" id="exampleInputPassword1" placeholder="телефон" required name="tel">
+  </div>
+    <div class="form-group">
+    <label for="exampleInputEmail1">Адрес</label>
+    <input type="text" class="form-control cl" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Адрес" required name="address"> 
+  </div>
+   <div class="form-group">
+    <label for="exampleInputEmail1">Статус</label>
+    <input type="text" class="form-control cl" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Статус"  required name="status">
+  </div>
+  <button type="submit" class="btn btn-primary">Отправить данные</button>
+    </form>
+            </div>
+            <div class="content" data-content="3">
+               <form action="/Income" method="post">
+      <div class="form-group">
+    <label for="exampleInputEmail1">Дата продажи</label>
+    <input type="date" class="form-control cl" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Дата" required name="data">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Количество</label>
+    <input type="Number" class="form-control cl" id="exampleInputPassword1" placeholder="Количество" required name="kol">
+  </div>
+    <div class="form-group">
+    <label for="exampleInputEmail1">Номер документа</label>
+    <input type="Number" class="form-control cl" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Номер документа" required name="NumberDocument"> 
+  </div>
+   <div class="form-group">
+    <label for="exampleInputEmail1">Дата покупки</label>
+    <input type="date" class="form-control cl" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Дата" required name="dataPurchase">
+  </div>
+  <button type="submit" class="btn btn-primary">Отправить данные</button>
+    </form>
+            </div>
+       </div>
+   </div>
+ 
+</main>
+<script>
+  const tabs=document.getElementById("tabs");
+  const content=document.querySelectorAll(".content");
+
+  const changeClass=el=>{
+    for(let i=0;i<tabs.children.length;i++){
+      tabs.children[i].classList.remove("active");
+    }
+    el.classList.add("active");
+  }
+
+  tabs.addEventListener('click',e=>{
+    const curTab=e.target.dataset.btn;
+    changeClass(e.target);
+    for(let i=0;i<content.length;i++){
+      content[i].classList.remove('active');
+      if(content[i].dataset.content==curTab){
+            content[i].classList.add("active");
+      }
+    }
+  })
+</script>
+</body>
+
+</html>    
