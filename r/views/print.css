@@ -1,0 +1,12 @@
+@media print {
+	html, body{
+		height: 297mm;
+		width: 210mm;
+	}
+	.action-print{
+		display: none;
+	}
+	.btn-primary{
+		display: none;
+	}
+}
