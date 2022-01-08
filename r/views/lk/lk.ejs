@@ -1,0 +1,161 @@
+<html>
+  <head>
+    <title>Личный кабинет</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="stylesheet" type="text/css" href="/print.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-inner">
+        <div class="header_logo">
+          <h1>Ползователь: <%= name %></h1>
+        </div>
+        <div class="button">
+          <form action="/main" method="get">
+            <button type="submit" class="btn btn-primary">выход</button>
+          </form>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <h1 style="text-align: center">Ваши товары</h1>
+      <table class="table table-bordered table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Наименование товара</th>
+            <th scope="col">Код товара</th>
+            <th scope="col">единица измерений</th>
+            <th scope="col">Год выпуска</th>
+            <th scope="col">Цена</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% for(let i= 0 ; i < details.length; i++) {%> <% for(let j= 0 ; j <
+            details[i].roles.length; j++) {%>
+
+            <td><%= JSON.parse(details[i].roles[j]).nav %></td>
+            <td><%= JSON.parse(details[i].roles[j]).kod %></td>
+            <td><%= JSON.parse(details[i].roles[j]).ed %></td>
+            <td><%= JSON.parse(details[i].roles[j]).god %></td>
+            <td><%= JSON.parse(details[i].roles[j]).cena %></td>
+          </tr>
+        </tbody>
+        Общая стоимость всех товаров:
+        <span
+          ><%= sum= sum+Number(JSON.parse(details[i].roles[j]).cena) %></span
+        >
+        <% } %>
+      </table>
+
+      <% } %>
+
+      <h1 style="text-align: center">предприятия</h1>
+      <table class="table table-bordered table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Наименование предприятия</th>
+            <th scope="col">Телефон</th>
+            <th scope="col">адрес</th>
+            <th scope="col">статус</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% for(let i= 0 ; i < details.length; i++) {%> <% for(let j= 0 ; j <
+            details[i].enterprises.length; j++) {%>
+            <td><%= JSON.parse(details[i].enterprises[j]).nav %></td>
+            <td><%= JSON.parse(details[i].enterprises[j]).phone %></td>
+            <td><%= JSON.parse(details[i].enterprises[j]).addres %></td>
+            <td><%= JSON.parse(details[i].enterprises[j]).status %></td>
+          </tr>
+        </tbody>
+        <% } %>
+      </table>
+      <% } %>
+
+      <h1 style="text-align: center">Ваши расходы</h1>
+      <table class="table table-bordered table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Номер документа</th>
+            <th scope="col">Код товара</th>
+            <th scope="col">Наименование предприятия</th>
+            <th scope="col">Количество</th>
+            <th scope="col">Дата продажи</th>
+            <th scope="col">Цена</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% for(let i= 0 ; i < details.length; i++) {%> <% for(let j= 0 ; j <
+            details[i].expenseAndIncomes.length; j++) {%>
+            <td>
+              <%= JSON.parse(details[i].expenseAndIncomes[j]).NumberDocument %>
+            </td>
+            <td><%= JSON.parse(details[i].expenseAndIncomes[j]).kod %></td>
+            <td><%= JSON.parse(details[i].expenseAndIncomes[j]).nav %></td>
+            <td><%= JSON.parse(details[i].expenseAndIncomes[j]).kol %></td>
+            <td><%= JSON.parse(details[i].expenseAndIncomes[j]).data %></td>
+            <td><%= JSON.parse(details[i].expenseAndIncomes[j]).cena %></td>
+          </tr>
+        </tbody>
+        Общая стоимость всех расходов:
+        <span
+          ><%=
+          sums=sums+Number(JSON.parse(details[i].expenseAndIncomes[j]).cena*Number(JSON.parse(details[i].expenseAndIncomes[j]).kol))
+          %></span
+        >
+        <% } %>
+      </table>
+      <% } %>
+
+      <h1 style="text-align: center">Ваши приходы</h1>
+      <table class="table table-bordered table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Номер документа</th>
+            <th scope="col">Код товара</th>
+            <th scope="col">Наименование предприятия</th>
+            <th scope="col">Количество</th>
+            <th scope="col">дата покупки</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% for(let i= 0 ; i < details.length; i++) {%> <% for(let j= 0 ; j <
+            details[i].expenseAndIncomes.length; j++) {%>
+            <td>
+              <%= JSON.parse(details[i].expenseAndIncomes[j]).NumberDocument %>
+            </td>
+            <td><%= JSON.parse(details[i].expenseAndIncomes[j]).kod %></td>
+            <td><%= JSON.parse(details[i].expenseAndIncomes[j]).nav %></td>
+            <td><%= JSON.parse(details[i].expenseAndIncomes[j]).kol %></td>
+            <td>
+              <%= JSON.parse(details[i].expenseAndIncomes[j]).dataPurchase %>
+            </td>
+          </tr>
+        </tbody>
+        <% } %>
+      </table>
+      <% } %>
+      <a href="#" class="action-print btn btn-primary">Распечатать</a>
+    </main>
+    <foter class="footer"></foter>
+    <script>
+      $(function ($) {
+        $(".action-print").click(function () {
+          window.print();
+          return false;
+        });
+      });
+    </script>
+  </body>
+</html>
